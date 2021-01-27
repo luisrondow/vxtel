@@ -1,0 +1,28 @@
+<div class="card">
+    <h1>Simulação Vxtel</h1>
+    <form class="card-form">
+    <div class="card-form__input">
+        <h3>Origem</h3>
+        <input type="text" name="" value=""
+            placeholder="" />
+    </div>
+    <div class="card-form__input">
+        <h3>Destino</h3>
+        <input type="text" name="" value=""
+            placeholder="" />
+    </div>
+    <div class="card-form__input">
+        <h3>Tempo</h3>
+        <input type="text" name="" value=""
+            placeholder="" />
+            </div>
+    <div class="card-form__input">
+        <h3>Plano</h3>
+        <select name="cars" id="cars">
+        <%= for plan <- @plans_map do %>
+            <option value="<%= plan.value %>"><%= plan.key %></option>
+        <% end %>
+        </select>
+    </div>
+    </form>
+</div>
