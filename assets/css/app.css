@@ -1,0 +1,22 @@
+/* This file is for your main application css. */
+
+@import "../node_modules/nprogress/nprogress.css";
+
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "./phoenix.css";
+
+@import "./custom.css";
+
+@import "./live_view.css";
+
+@import "tailwindcss/utilities";
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 95%;
+}
