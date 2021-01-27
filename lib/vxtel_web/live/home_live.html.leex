@@ -1,28 +1,42 @@
 <div class="card">
+  <%= if !@loading do %>
     <h1>Simulação Vxtel</h1>
-    <form class="card-form">
-    <div class="card-form__input">
-        <h3>Origem</h3>
-        <input type="text" name="" value=""
-            placeholder="" />
-    </div>
-    <div class="card-form__input">
-        <h3>Destino</h3>
-        <input type="text" name="" value=""
-            placeholder="" />
-    </div>
-    <div class="card-form__input">
-        <h3>Tempo</h3>
-        <input type="text" name="" value=""
-            placeholder="" />
-            </div>
-    <div class="card-form__input">
-        <h3>Plano</h3>
-        <select name="cars" id="cars">
-        <%= for plan <- @plans_map do %>
-            <option value="<%= plan.value %>"><%= plan.key %></option>
+    <form class="card-form" phx-change="validate" phx-submit="save">
+        <div class="card-form__input">
+            <h3>Origem</h3>
+            <input type="text" name="simulate[from]"/>
+        </div>
+        <div class="card-form__input">
+            <h3>Destino</h3>
+            <input type="text" name="simulate[to]"/>
+        </div>
+        <div class="card-form__input">
+            <h3>Tempo</h3>
+            <input type="text" name="simulate[duration]"/>
+        </div>
+        <div class="card-form__input">
+            <h3>Plano</h3>
+            <select name="simulate[plan]">
+            <%= for plan <- @plans do %>
+                <option value="<%= plan.key %>"><%= plan.key %></option>
+            <% end %>
+            </select>
+        </div>
+        <%= if @valid do %>
+          <button type="submit">Simular</button>
+        <% else %>
+          <button disabled>Simular</button>
         <% end %>
-        </select>
-    </div>
     </form>
+  <% end %>
+
+  <%= if @loading do %>
+      <div class="loader">
+          Loading...
+      </div>
+  <% end %>
 </div>
+
+<%= if @open_result do %>
+  <%= live_component @socket, ResultComponent, from: @simulate["from"], to: @simulate["to"], value: @value, plan_value: @plan_value, plan: @simulate["plan"]  %>
+<% end %>

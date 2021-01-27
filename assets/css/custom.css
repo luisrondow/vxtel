@@ -2,12 +2,8 @@ body {
   @apply antialiased bg-purple-600 font-sans;
 }
 
-header {
-  @apply mb-8;
-}
-
 .container {
-  @apply w-screen flex items-center justify-center px-6;
+  @apply w-screen max-w-full flex flex-col items-center justify-center px-6;
 }
 
 h1 {
@@ -27,5 +23,13 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
+  @apply outline-none;
+}
+
+select {
+  @apply h-12 border border-cool-gray-300 rounded-md bg-white w-full px-3 text-xl md:w-2/3;
+}
+
+select:focus {
   @apply outline-none;
 }
