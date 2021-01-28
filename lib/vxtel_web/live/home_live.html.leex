@@ -37,6 +37,6 @@
   <% end %>
 </div>
 
-<%= if @open_result do %>
+<%= if @open_result && !@loading do %>
   <%= live_component @socket, ResultComponent, from: @simulate["from"], to: @simulate["to"], value: @value, plan_value: @plan_value, plan: @simulate["plan"]  %>
 <% end %>

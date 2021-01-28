@@ -18,10 +18,6 @@ defmodule VxtelWeb.HomeLive do
     {:ok, socket}
   end
 
-  def handle_event("validate", %{"simulate" => params}, socket) do
-    {:noreply, socket}
-  end
-
   def handle_event("save", %{"simulate" => params}, socket) do
     send(self(), {:run_calculate, params})
 
